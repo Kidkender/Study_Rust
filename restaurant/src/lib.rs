@@ -1,24 +1,10 @@
+mod front_of_house;
 
-
-mod front_of_hourse {
-    pub mod hosting {
-        pub fn add_to_waitlist() {}
-
-        fn seat_at_table() {}
-    }
-
-    mod serving {
-        fn take_order() {}
-
-        fn serve_order() {}
-
-        fn take_payment() {}
-    }
-}
+pub use front_of_house::hosting;
 
 fn deliver_order() {}
 
-mod back_of_hourse {
+mod back_of_house {
     pub enum Appetizer {
         Soup,
         Salad,
@@ -47,13 +33,20 @@ mod back_of_hourse {
 }
 
 pub fn eat_at_restaurant() {
-    let mut meal = back_of_hourse::Breakfast::summer("Rye");
+    let mut meal = back_of_house::Breakfast::summer("Rye");
     meal.toast = String::from("Wheat");
 
     println!("I'd like {} toast please", meal.toast);
     // meal.seasonal_fruit = String::from("blueberries");
 
-    let order1 = back_of_hourse::Appetizer::Soup;
-    let order2 = back_of_hourse::Appetizer::Salad;
+    let order1 = back_of_house::Appetizer::Soup;
+    let order2 = back_of_house::Appetizer::Salad;
 
+}
+
+
+pub mod customer {
+    pub fn eat_at_restaurant() {
+        super::hosting::add_to_waitlist("soup");
+    }
 }

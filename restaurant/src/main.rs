@@ -1,5 +1,9 @@
-use restaurant::eat_at_restaurant;
+use restaurant::customer;
+use std::collections::HashMap;
 
 fn main() {
-    eat_at_restaurant()
+    let mut map = HashMap::new();
+    map.insert(1,2);
+
+    customer::eat_at_restaurant();
 }
